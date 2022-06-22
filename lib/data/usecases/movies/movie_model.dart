@@ -1,7 +1,6 @@
 import 'package:projeto_cadastro_final/domain/entities/movie_entity.dart';
 
 class MovieModel {
-  
   MovieModel({
     required this.title,
     required this.description,
@@ -24,7 +23,7 @@ class MovieModel {
   MovieEntity toEntity() => MovieEntity(
         name: title,
         description: description,
-        image: posterPath,
+        image: 'https://image.tmdb.org/t/p/w300' + posterPath,
         rating: rating,
       );
 }

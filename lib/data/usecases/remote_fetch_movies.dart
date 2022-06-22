@@ -12,11 +12,15 @@ class RemoteFetchMovies extends FetchMovies {
 
   final HttpClient httpClient;
 
+  final String baseUrl = 'https://api.themoviedb.org/3/movie/popular?';
+  final String apiKey = '132dfc8e68a337152fd3e36d63c77677';
+  final String language = 'pt-BR';
+
   @override
   Future<List<MovieEntity>> execute() async {
     try {
-      final response =
-          await httpClient.get(url: 'https://demo7206081.mockable.io/movies');
+      final response = await httpClient.get(
+          url: baseUrl + 'api_key=' + apiKey + '&language=' + language);
 
       final moviesList = response?['results']
           .map<MovieEntity>((json) => MovieModel.fromJson(json).toEntity())

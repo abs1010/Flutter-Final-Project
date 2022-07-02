@@ -5,7 +5,6 @@ import 'package:projeto_cadastro_final/main/pages/movies_presenter_factory.dart'
 import 'package:projeto_cadastro_final/presentation/movies/movies_presenter.dart';
 
 Widget makeMoviesScreen() {
-
   final presenter = Get.put<MoviesPresenter>(makeMoviesPresenter());
 
   return MoviesScreen(

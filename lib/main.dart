@@ -1,9 +1,14 @@
+import 'dart:ffi';
+
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:projeto_cadastro_final/UI/movies_screen.dart';
-import 'package:projeto_cadastro_final/main/pages/movies_screen_factory.dart';
+import 'package:projeto_cadastro_final/UI/login/login_screen.dart';
+import 'package:projeto_cadastro_final/UI/movies/movies_screen.dart';
+import 'package:projeto_cadastro_final/main/pages/movies/movies_screen_factory.dart';
 import 'firebase_options.dart';
+import 'main/pages/login/login_screen_factory.dart';
 //import 'package:flutter_native_splash/flutter_native_splash.dart';
 
 void main() async {
@@ -14,22 +19,41 @@ void main() async {
     options: DefaultFirebaseOptions.currentPlatform,
   );
 
-  runApp(const MyApp());
+  FirebaseAuth.instance.authStateChanges().listen((User? user) {
+    if (user == null) {
+      print('User is currently signed out!');
+      runApp(const MyApp(
+        shouldShowLogin: true,
+      ));
+    } else {
+      print('User is signed in!');
+      runApp(const MyApp(
+        shouldShowLogin: false,
+      ));
+    }
+  });
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({Key? key}) : super(key: key);
+  const MyApp({Key? key, required this.shouldShowLogin}) : super(key: key);
+
+  final bool shouldShowLogin;
 
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
+    var initialRoute = shouldShowLogin ? LoginScreen.id : MoviesScreen.id;
+
     return GetMaterialApp(
       title: 'Projeto Final TMDB',
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      initialRoute: MoviesScreen.id,
-      getPages: [GetPage(name: MoviesScreen.id, page: makeMoviesScreen)],
+      initialRoute: initialRoute,
+      getPages: [
+        GetPage(name: LoginScreen.id, page: makeLoginScreen),
+        GetPage(name: MoviesScreen.id, page: makeMoviesScreen),
+      ],
     );
   }
 }

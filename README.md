@@ -38,5 +38,3 @@ A composição da nota será:
 - 10% - Documentação
 
 Para a entrega basta enviar o link do github e a documentação.
-
-dev.jonny255d@gmail.com

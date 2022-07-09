@@ -5,7 +5,7 @@ class RoundedTextField extends StatelessWidget {
     Key? key,
     required this.onTextChanged,
     this.hint = '',
-  }) : super (key: key);
+  }) : super(key: key);
 
   final String hint;
   final Function(String) onTextChanged;
@@ -16,9 +16,8 @@ class RoundedTextField extends StatelessWidget {
       onChanged: onTextChanged,
       decoration: InputDecoration(
         labelText: hint,
-        border: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(1000),
-        ),
+        filled: true,
+        fillColor: Colors.white,
       ),
     );
   }

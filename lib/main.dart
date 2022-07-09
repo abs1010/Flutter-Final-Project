@@ -47,7 +47,7 @@ class MyApp extends StatelessWidget {
     return GetMaterialApp(
       title: 'Projeto Final TMDB',
       theme: ThemeData(
-        primarySwatch: Colors.blue,
+        primarySwatch: Colors.teal,
       ),
       initialRoute: initialRoute,
       getPages: [

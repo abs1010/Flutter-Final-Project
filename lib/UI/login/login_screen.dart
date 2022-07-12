@@ -22,7 +22,7 @@ class LoginScreen extends StatelessWidget {
         title: 'App name',
         home: Builder(builder: (BuildContext context) {
           return Scaffold(
-            backgroundColor: Color.fromRGBO(29, 63, 55, 1),
+            backgroundColor: const Color.fromRGBO(29, 63, 55, 1),
             body: SafeArea(
               child: Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 24),

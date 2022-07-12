@@ -1,7 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
-
-import '../../presentation/login/login_presenter.dart';
 
 class RoundedButton extends StatelessWidget {
   const RoundedButton({
@@ -15,7 +12,6 @@ class RoundedButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final presenter = Get.find<LoginPresenter>();
     return InkWell(
       onTap: onPressed,
       child: Material(
